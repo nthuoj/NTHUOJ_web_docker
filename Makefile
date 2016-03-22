@@ -1,6 +1,6 @@
 all:
 	docker build -t oj_web .
-	sh docker_start.sh
+	docker run -d --name=oj_web oj_web
 	docker cp oj_web:/NTHUOJ_web .
 	sh docker_stop.sh
 clean:
