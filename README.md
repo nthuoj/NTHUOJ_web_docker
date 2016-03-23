@@ -1,19 +1,30 @@
 # NTHUOJ_web_docker
 
-Edit database setting in NTHUOJ_Docker_build/nthuoj/settings.py
-Edit email setting in NTHUOJ_Docker_build/nthuoj/config.cfg
+## Edit setting file
+  * Edit database setting in NTHUOJ_Docker_build/nthuoj/settings.py
+  * Edit email setting in NTHUOJ_Docker_build/nthuoj/config.cfg
 
-執行Make建立環境
+## Getting started
+```bash
+Make
+```
 
-線上正式環境
-sh docker_start.sh
+## Running web container
+```bash
+./docker_start.sh
+```
 
-停止oj_web
-sh docker_start.sh
+## Stop web container
+```bash
+./docker_start.sh
+```
 
-重新build docker image
-sh docker_rebuild.sh
+## build docker image
+```bash
+./docker_rebuild.sh
+```
 
-開發環境
-sh docker_dev.sh
-編輯NTHUOJ_web資料夾中的檔案
+## Edit NTHUOJ_web file without enter docker container
+```bash
+./docker_dev.sh
+```
