@@ -1,5 +1,3 @@
-#remove = "N"
-
 all:
 	docker build -t oj_web .
 	if [ ! -d "NTHUOJ_web" ]; then \
@@ -8,16 +6,11 @@ all:
 		sh docker_stop.sh; \
 	fi
 
-#	@read -p "Do you want to remove NTHUOJ_web?(y/N): " remove;
-
 clean:
 	./docker_stop.sh
 	@if [ "$(docker images -q oj_web)" != "" ]; then \
 		docker rmi -f oj_web; \
 	fi
-	@while [ -z "$$CONTINUE" ]; do \
-		read -r -p "Do you want to remove NTHUOJ_web?. [y/N]: " CONTINUE; \
-	done ; \
-	[ $$CONTINUE = "y" ] || [ $$CONTINUE = "Y" ] || (echo "Exiting."; exit 1;)
-	rm -rf NTHUOJ_web	
-
+	@read -p "Do you want to remove NTHUOJ_web?. [y/N]: " CONTINUE; \
+	[ $$CONTINUE = "y" -o $$CONTINUE = "Y" ] && rm -rf NTHUOJ_web && exit 0;\
+	[ $$CONTINUE = "n" -o $$CONTINUE = "N"] && exit 0;
