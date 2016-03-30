@@ -6,7 +6,7 @@ apt-get autoclean && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g bower
 
-RUN git clone https://github.com/bruce3557/NTHUOJ_web.git && cd NTHUOJ_web && git checkout dev
+RUN git clone https://github.com/nthuoj/NTHUOJ_web.git && cd NTHUOJ_web && git checkout dev
 
 COPY NTHUOJ_Docker_build /NTHUOJ_web/
 
