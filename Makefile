@@ -13,4 +13,4 @@ clean:
 	fi
 	@read -p "Do you want to remove NTHUOJ_web?. [y/N]: " CONTINUE; \
 	[ $$CONTINUE = "y" -o $$CONTINUE = "Y" ] && rm -rf NTHUOJ_web && exit 0;\
-	[ $$CONTINUE = "n" -o $$CONTINUE = "N"] && exit 0;
+	[ $$CONTINUE = "n" -o $$CONTINUE = "N" ] && exit 0;
