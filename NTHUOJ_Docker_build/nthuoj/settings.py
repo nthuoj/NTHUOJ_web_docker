@@ -60,7 +60,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'utils.render_helper.CustomHttpExceptionMiddleware',
-    'axes.middleware.FailedLoginMiddleware',
 )
 
 ROOT_URLCONF = 'nthuoj.urls'
@@ -135,9 +134,9 @@ BOWER_COMPONENTS_ROOT = os.path.join(PROJECT_ROOT, 'components')
 
 BOWER_INSTALLED_APPS = (
     'Chart.js',
-    'jquery',
+    'jquery#=2.2.4',
     'jquery-ui#1.9.2',
-    'https://github.com/thomaspark/bootswatch.git',  # bootswatch
+    'https://github.com/thomaspark/bootswatch.git#3.3.6+1',  # bootswatch
     'https://github.com/dimsemenov/Magnific-Popup.git',  # Magnific-Popup
     'https://github.com/codemirror/CodeMirror.git',  # CodeMirror
     # bootstrap fileinput
@@ -145,7 +144,7 @@ BOWER_INSTALLED_APPS = (
     'https://github.com/lou/multi-select.git',  # multiselect
     'https://github.com/riklomas/quicksearch.git',  # quicksearch
     # jquery url plugin
-    'https://gantry.googlecode.com/svn/trunk/root/js/jquery.url.min.js',
+    'https://github.com/websanova/js-url.git'
 )
 
 STATICFILES_FINDERS = (
