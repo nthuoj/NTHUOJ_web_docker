@@ -66,14 +66,14 @@ ROOT_URLCONF = 'nthuoj.urls'
 
 WSGI_APPLICATION = 'nthuoj.wsgi.application'
 
+CONFIG_PATH = os.path.join(BASE_DIR, 'nthuoj/config/nthuoj.cfg')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME' : 'nthuoj',
-        'USER' : '',
-        'PASSWORD' : '',
-        'HOST' : '',
-        'PORT' : '3306',
+        'OPTIONS': {
+            'read_default_file': CONFIG_PATH,
+        },
     }
 }
 

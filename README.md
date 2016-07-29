@@ -1,8 +1,10 @@
 # NTHUOJ_web_docker
 
-## Edit setting file
-  * Edit database setting in NTHUOJ_Docker_build/nthuoj/settings.py
-  * Edit email setting in NTHUOJ_Docker_build/nthuoj/config.cfg
+## Require
+  * Docker >= 1.9.0
+
+## Edit configuration file
+  * Edit database and email configure in NTHUOJ_Docker_build/nthuoj/config.cfg
 
 ## Getting started
 ```bash
@@ -24,7 +26,7 @@ Make
 ./docker_rebuild.sh
 ```
 
-## Edit NTHUOJ_web file without enter docker container
+## Edit NTHUOJ_web file with docker container
 ```bash
 ./docker_dev.sh
 ```
