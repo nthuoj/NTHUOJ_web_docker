@@ -4,7 +4,7 @@
   * Docker >= 1.9.0
 
 ## Edit configuration file
-  * Edit database and email configure in NTHUOJ_Docker_build/nthuoj/config.cfg
+  * Edit database and email configure in NTHUOJ_Docker_build/nthuoj/config/nthuoj.cfg
 
 ## Getting started
 ```bash
