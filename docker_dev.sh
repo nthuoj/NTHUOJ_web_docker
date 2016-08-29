@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 if [ "$(docker ps -aqf "name=oj_web")" != "" ]; then
 	docker stop oj_web
