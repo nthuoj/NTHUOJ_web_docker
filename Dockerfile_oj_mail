@@ -1,0 +1,6 @@
+FROM ubuntu:14.04
+
+COPY oj_mail_build/apt/sources.list /etc/apt
+COPY oj_mail_build/install.sh oj_mail_build/send_mail.sh /
+
+RUN bash install.sh && rm install.sh
