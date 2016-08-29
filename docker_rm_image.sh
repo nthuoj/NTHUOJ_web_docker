@@ -1,7 +1,7 @@
 #!/bin/bash
 
 image=$1
-if [ "${image}" == "" ]; then
+if [ "${image}" = "" ]; then
     image="oj_web"
 fi
 
