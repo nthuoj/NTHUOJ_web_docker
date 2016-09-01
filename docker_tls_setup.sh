@@ -56,7 +56,7 @@ cp ${CA} ${CA_KEY} ${SERVER_CERT} ${SERVER_KEY} ${CLIENT_CERT} ${CLIENT_KEY} ~/.
 chown -R ${USER} ~/.docker/{${CA},${CA_KEY},${SERVER_CERT},${SERVER_KEY},${CLIENT_CERT},${CLIENT_KEY}}
 
 # configure docker daemon default with tls
-json="{\"hosts\": [\"unix:///var/run/docker.sock\",\"tcp://0.0.0.0:2376\"], \"tlsverify\": true, \"tlscacert\": \"${HOME}/.docker/${CA}\", \"tlscert\": \"${HOME}/.docker/${SERVER_CERT}\", \"tlskey\": \"${HOME}/.docker/${SERVER_KEY}\"}"
+json="{\"tlsverify\": true, \"tlscacert\": \"${HOME}/.docker/${CA}\", \"tlscert\": \"${HOME}/.docker/${SERVER_CERT}\", \"tlskey\": \"${HOME}/.docker/${SERVER_KEY}\"}"
 echo ${json} > /etc/docker/daemon.json
 
 # remove all files in TLS_SETUP_DIR
