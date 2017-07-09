@@ -1,15 +1,11 @@
-#/bin/bash
+#!/bin/bash
 
-if [ "$(docker ps -aqf "name=oj_web")" != "" ]; then
-	docker stop oj_web
+DOCKERFILE_PREFIX="Dockerfile"
+image=$1
+if [ "${image}" = "" ]; then
+    image="oj_web"
 fi
 
-if [ "$(docker ps -aqf "name=oj_web")" != "" ]; then
-	docker rm -f oj_web
-fi
-
-if [ "$(docker images -q oj_web)" != "" ]; then
-	docker rmi -f oj_web
-fi
-
-docker build -t oj_web .
+bash docker_stop.sh ${image}
+bash docker_rm_image.sh ${image}
+docker build -t ${image} -f "${DOCKERFILE_PREFIX}_${image}" .

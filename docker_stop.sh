@@ -1,9 +1,13 @@
-#/bin/bash
+#!/bin/bash
 
-if [ "$(docker ps -aqf "name=oj_web")" != "" ]; then
-	docker stop oj_web
+image=$1
+if [ "${image}" = "" ]; then
+    image="oj_web"
 fi
 
-if [ "$(docker ps -aqf "name=oj_web")" != "" ]; then
-	docker rm -f oj_web
-fi
+docker ps -aqf "ancestor=${image}" | \
+while read -r container_id
+do
+    docker stop ${container_id}
+    docker rm -f ${container_id}
+done
