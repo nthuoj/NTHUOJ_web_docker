@@ -2,55 +2,62 @@
 
 ## Require
   * Docker >= 1.9.0
+  * MySQL Database
 
 ## Getting started
-1. Edit `client`(database) and `email` section in `oj_web_build/NTHUOJ_web/nthuoj/config/nthuoj.cfg`
-2. Generate certificates and keys for TLS connection to docker daemon
+1. Set up a mysql database, for example
+    ```
+    $ create database dbname character set utf8;
+    $ GRANT ALL ON *.* TO 'user'@'%' IDENTIFIED BY 'password';
+    $ FLUSH PRIVILEGES;
+    ```
+2. Edit `client`(database) and `email` section in `oj_web_build/NTHUOJ_web/nthuoj/config/nthuoj.cfg`
+3. Generate certificates and keys for TLS connection to docker daemon
 
-  ```
-  $ sudo ./docker_tls_setup.sh
-  ```
+    ```
+    $ sudo ./docker_tls_setup.sh
+    ```
 
-3. Configure docker daemon with TLS support
+4. Configure docker daemon with TLS support
 
   - **_If your system (Ex. Ubuntu 15.04 or higher) uses systemd as a process manager, please follow the steps below_**
 
     1. Create a systemd drop-in directory for the docker service
 
-      ```
-      $ sudo mkdir /etc/systemd/system/docker.service.d
-      ```
+        ```
+        $ sudo mkdir /etc/systemd/system/docker.service.d
+        ```
 
     2. Create a file called `/etc/systemd/system/docker.service.d/tls.conf` which contains the following contents
 
-      ```
-      [Service]
-      ExecStart=
-      ExecStart=/usr/bin/docker daemon -H fd:// -H tcp://0.0.0.0:2376
-      ```
+        ```
+        [Service]
+        ExecStart=
+        ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2376
+        ```
 
     3. Flush changes
 
-      ```
-      $ sudo systemctl daemon-reload
-      ```
+        ```
+        $ sudo systemctl daemon-reload
+        ```
 
   - **_If your system (Ex. Ubuntu 14.04) uses Upstart as a process manager, please follow the steps below_**
 
     1. Create the `/etc/default/docker` file on your host if you don’t have one
     2. Open the file with your favorite editor
 
-      ```
-      $ sudo vi /etc/default/docker
-      ```
+        ```
+        $ sudo vi /etc/default/docker
+        ```
 
     3. Add a `DOCKER_OPTS` variable with the following options and then save the file
 
-      ```
-      DOCKER_OPTS="-D -H unix:///var/run/docker.sock -H tcp://0.0.0.0:2376"
-      ```
+        ```
+        DOCKER_OPTS="-D -H unix:///var/run/docker.sock -H tcp://0.0.0.0:2376"
+        ```
 
-4. Restart docker daemon
+5. Restart docker daemon
 
   - For the system that uses **systemd** as a process manager
 
@@ -64,20 +71,20 @@
     $ sudo service docker restart
     ```
 
-5. Make sure that you can connect to docker daemon without sudo
+6. Make sure that you can connect to docker daemon without sudo
 
-  ```
-  $ docker ps
-  $ docker --tlsverify -H tcp://127.0.0.1:2376 ps
-  ```
+    ```
+    $ docker ps
+    $ docker --tlsverify -H tcp://127.0.0.1:2376 ps
+    ```
 
-   If not, please check [this](https://docs.docker.com/engine/installation/linux/ubuntulinux/#create-a-docker-group) and make sure you've followed the step above correctly. 
+    If not, please check [this](https://docs.docker.com/engine/installation/linux/ubuntulinux/#create-a-docker-group) and make sure you've followed the step above correctly. 
 
-6. Build all images
+7. Build all images
 
-  ```
-  $ make
-  ```
+    ```
+    $ make
+    ```
 
 ## Running web container
 ```
